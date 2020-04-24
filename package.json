@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@govuk-react/footer": "^0.7.2",
     "axios": "^0.19.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-footer-comp": "^3.0.1",
     "react-loading-overlay": "^1.0.1",
     "react-map-gl": "^5.2.5",
     "react-scripts": "3.4.1",
+    "react-sticky-footer": "0.1.0-rc3",
     "simple-react-modal": "^0.5.1"
   },
   "scripts": {
