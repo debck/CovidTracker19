@@ -2,7 +2,7 @@ import React, { useState, useEffect, Component } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import axios from "axios";
 import LoadingOverlay from "react-loading-overlay";
-import StickyFooter from "react-sticky-footer";
+import Bottom from "./components/Bottom";
 import "./App.css";
 
 class App extends Component {
@@ -33,7 +33,6 @@ class App extends Component {
         this.setState({ confirmed });
         this.setState({ deaths });
         this.setState({ latest });
-        // console.log(latest);
       });
   }
 
@@ -114,44 +113,7 @@ class App extends Component {
             </Popup>
           ) : null}
 
-          <div style={{ position: "absolute", bottom: "0rem" }}>
-            <StickyFooter
-              stickAtThreshold={0}
-              normalStyles={{
-                backgroundColor: "#999999",
-                padding: "1rem",
-              }}
-              stickyStyles={{
-                backgroundColor: "rgba(255,255,255,.8)",
-                padding: "1rem",
-              }}
-            >
-              <h4>
-                <strong> Confirmed:</strong>{" "}
-                <span>{this.state.latest.confirmed}</span>
-              </h4>
-              <h4>
-                <strong> Deaths: </strong>{" "}
-                <span>{this.state.latest.deaths}</span>
-              </h4>
-              <h4>
-                <strong>Recovered: </strong>{" "}
-                <span>{this.state.latest.recovered}</span>
-              </h4>
-              <p>
-                Developed by{" "}
-                <a
-                  href="https://www.linkedin.com/in/debasish2014/"
-                  data-toggle="tooltip"
-                  title="Yes, that's me!!"
-                  target="_blank"
-                  style={{ color: "#2b7489" }}
-                >
-                  @debck
-                </a>{" "}
-              </p>
-            </StickyFooter>
-          </div>
+          <Bottom latest={this.state.latest}></Bottom>
         </ReactMapGL>
       </div>
     );
