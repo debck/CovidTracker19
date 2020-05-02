@@ -1,8 +1,8 @@
 import React, { useState, useEffect, Component } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import axios from "axios";
-import LoadingOverlay from "react-loading-overlay";
 import Bottom from "./components/Bottom";
+import Loader from "./components/Loader";
 import "./App.css";
 
 class App extends Component {
@@ -18,7 +18,6 @@ class App extends Component {
     deaths: [],
     latest: [],
     key: null,
-    isactive: true,
   };
 
   componentDidMount() {
@@ -49,11 +48,7 @@ class App extends Component {
           onViewportChange={(viewport) => this.setState({ viewport })}
         >
           {this.state.confirmed.length == 0 ? (
-            <LoadingOverlay
-              active={this.state.isactive}
-              spinner
-              text="Loading your data..."
-            ></LoadingOverlay>
+            <Loader />
           ) : (
             this.state.confirmed.locations.map((value, key) => (
               <Marker
@@ -113,7 +108,7 @@ class App extends Component {
             </Popup>
           ) : null}
 
-          <Bottom latest={this.state.latest}></Bottom>
+          <Bottom latest={this.state.latest} />
         </ReactMapGL>
       </div>
     );
